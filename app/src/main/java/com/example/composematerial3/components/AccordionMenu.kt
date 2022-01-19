@@ -1,6 +1,7 @@
 package com.example.composematerial3.components
 
 import androidx.compose.animation.animateContentSize
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -27,10 +28,11 @@ fun AccordionMenu(
     bgColor: Color = MaterialTheme.colorScheme.primaryContainer,
     headerColor: Color = MaterialTheme.colorScheme.inverseSurface,
     contentColor: Color = MaterialTheme.colorScheme.inverseSurface,
-    arrowColor: Color = Color.Black
+    arrowColor: Color = Color.Black,
+    firstExpanded: Boolean = false
 ) {
 
-    var expanded by remember { mutableStateOf(false) }
+    var expanded by remember { mutableStateOf(firstExpanded) }
 
     // Card is still experimental
     Card(
@@ -68,11 +70,9 @@ fun AccordionMenu(
                         start.linkTo(outerText.start)
                     })
 
-            // Not recommended
-//            Icon(Icons.Filled.KeyboardArrowDown, contentDescription = "Arrow icon")
-
-            // Recommended
             Icon(
+//                 Not Recommended
+//                Icons.Filled.KeyboardArrowDown,
                 painter = painterResource(id = R.drawable.ic_baseline_keyboard_arrow_down_24),
                 contentDescription = "Arrow icon",
                 modifier = Modifier.constrainAs(arrow) {
@@ -89,5 +89,8 @@ fun AccordionMenu(
 @Preview(showBackground = true)
 @Composable
 fun AccordionPreview() {
-    AccordionMenu(header = "Header", content = "Content \nContent \nContent \nContent")
+    Column {
+        AccordionMenu(header = "Header", content = "Content \nContent \nContent \nContent", firstExpanded = true)
+        AccordionMenu(header = "Header", content = "Content \nContent \nContent \nContent", firstExpanded = false)
+    }
 }
