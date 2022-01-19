@@ -39,11 +39,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainActivityContent() {
     AppTheme {
-        Surface(
-            modifier = Modifier.padding(16.dp)
-        ) {
-            Greeting("Everyone")
-        }
+        Greeting("Everyone")
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -60,6 +56,10 @@ fun MainActivityContent() {
 
             AccordionMenu(
                 header = stringResource(id = R.string.lorem_header),
+                content = generateLoremIpsum(20)
+            )
+            AccordionMenu(
+                header = stringResource(id = R.string.lorem_header_2),
                 content = generateLoremIpsum(12)
             )
         }
@@ -71,7 +71,8 @@ fun Greeting(name: String) {
     Text(
         text = "Hello $name!",
         style = MaterialTheme.typography.headlineMedium,
-        color = MaterialTheme.colorScheme.primary
+        color = MaterialTheme.colorScheme.primary,
+        modifier = Modifier.padding(16.dp)
     )
 }
 
