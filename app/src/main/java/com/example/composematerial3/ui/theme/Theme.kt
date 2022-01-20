@@ -40,3 +40,8 @@ fun AppTheme(
         // material2 has shape, in material3 hasn't been implemented
     )
 }
+
+//@Composable
+//fun AppTheme2() {
+//    androidx.compose.material.MaterialTheme()
+//}
