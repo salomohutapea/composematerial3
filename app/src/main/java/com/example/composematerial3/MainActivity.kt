@@ -80,10 +80,10 @@ fun PaddingExample() {
         text = "Hello World!",
         color = Color.Black,
         modifier = Modifier
-            .padding(8.dp) // margin
-            .border(2.dp, Color.Black) // outer border
             .padding(8.dp) // space between the borders
             .border(2.dp, Color.Green) // inner border
             .padding(8.dp) // padding
+            .border(2.dp, Color.Black) // outer border
+            .padding(8.dp) // margin
     )
 }

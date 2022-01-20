@@ -21,10 +21,10 @@ import androidx.compose.ui.unit.dp
 import com.example.composematerial3.Puppy
 
 @Composable
-fun PuppyListItem(puppy: Puppy, i: Int) {
+fun PuppyListItem(puppy: Puppy) {
     val context = LocalContext.current
 
-    Log.d("PUPPIES", "$i Showed")
+    Log.d("PUPPIES", "${puppy.id} Showed")
 
     Row(
         modifier = Modifier
@@ -43,7 +43,7 @@ fun PuppyListItem(puppy: Puppy, i: Int) {
                 color = colorScheme.primary
             )
             Text(
-                text = "Puppy $i", style = typography.bodyMedium,
+                text = "Puppy ${puppy.id}", style = typography.bodyMedium,
                 color = colorScheme.primary
             )
         }

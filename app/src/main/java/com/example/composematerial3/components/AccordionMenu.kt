@@ -18,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.composematerial3.R
-import com.example.composematerial3.ui.theme.Shapes
+import com.example.composematerial3.ui.theme.ShapesABC
 
 @ExperimentalMaterialApi
 @Composable
@@ -42,7 +42,7 @@ fun AccordionMenu(
             .padding(16.dp)
             .animateContentSize(),
         backgroundColor = bgColor,
-        shape = Shapes.medium,
+        shape = ShapesABC.medium,
         onClick = {
             expanded = !expanded
         }
@@ -51,15 +51,6 @@ fun AccordionMenu(
             modifier = Modifier.padding(20.dp)
         ) {
             val (outerText, insideText, arrow) = createRefs()
-
-            Text(
-                text = header,
-                color = headerColor,
-                modifier = Modifier.constrainAs(outerText) {
-                    top.linkTo(parent.top)
-                },
-                style = MaterialTheme.typography.headlineSmall
-            )
 
             if (expanded)
                 Text(
@@ -80,6 +71,15 @@ fun AccordionMenu(
                     centerVerticallyTo(outerText)
                 },
                 tint = arrowColor
+            )
+
+            Text(
+                text = header,
+                color = headerColor,
+                modifier = Modifier.constrainAs(outerText) {
+                    top.linkTo(parent.top)
+                },
+                style = MaterialTheme.typography.headlineSmall
             )
         }
     }
