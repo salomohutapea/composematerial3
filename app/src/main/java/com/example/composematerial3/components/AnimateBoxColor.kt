@@ -1,6 +1,5 @@
 package com.example.composematerial3.components
 
-import android.widget.Toast
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -9,18 +8,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun AnimateBoxColor(firstColor: Color, secondColor: Color) {
-
-    val context = LocalContext.current
+//    https://medium.com/androiddevelopers/under-the-hood-of-jetpack-compose-part-2-of-2-37b2c20c6cdd
     var colorState by remember { mutableStateOf(true) }
     val color by animateColorAsState(if (colorState) firstColor else secondColor)
 
@@ -35,14 +31,9 @@ fun AnimateBoxColor(firstColor: Color, secondColor: Color) {
     Button(
         onClick = {
             colorState = !colorState
-            Toast.makeText(
-                context,
-                "Button clicked!",
-                Toast.LENGTH_SHORT
-            ).show()
         },
-        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primaryContainer)
+        colors = ButtonDefaults.buttonColors(containerColor = color)
     ) {
-        Text(text = "Change color", color = MaterialTheme.colorScheme.primary)
+        Text(text = "Change color")
     }
 }

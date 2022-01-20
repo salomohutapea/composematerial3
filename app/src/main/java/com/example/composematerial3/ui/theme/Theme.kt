@@ -37,5 +37,6 @@ fun AppTheme(
         colorScheme = colorScheme,
         typography = Typography,
         content = content
+        // material2 has shape, in material3 hasn't been implemented
     )
 }
