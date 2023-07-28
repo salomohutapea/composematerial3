@@ -35,31 +35,27 @@ fun AccordionMenu(
     var expanded by remember { mutableStateOf(firstExpanded) }
 
     // Card is still experimental
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight()
-            .padding(16.dp)
-            .animateContentSize(),
+    Card(modifier = Modifier
+        .fillMaxWidth()
+        .wrapContentHeight()
+        .padding(16.dp)
+        .animateContentSize(),
         backgroundColor = bgColor,
         shape = ShapesABC.medium,
         onClick = {
             expanded = !expanded
-        }
-    ) {
+        }) {
         ConstraintLayout(
             modifier = Modifier.padding(20.dp)
         ) {
             val (outerText, insideText, arrow) = createRefs()
 
-            if (expanded)
-                Text(
-                    text = content,
-                    color = contentColor,
-                    modifier = Modifier.constrainAs(insideText) {
-                        top.linkTo(outerText.bottom, margin = 12.dp)
-                        start.linkTo(outerText.start)
-                    })
+            if (expanded) Text(text = content,
+                color = contentColor,
+                modifier = Modifier.constrainAs(insideText) {
+                    top.linkTo(outerText.bottom, margin = 12.dp)
+                    start.linkTo(outerText.start)
+                })
 
             Icon(
 //                 Not Recommended
@@ -74,12 +70,9 @@ fun AccordionMenu(
             )
 
             Text(
-                text = header,
-                color = headerColor,
-                modifier = Modifier.constrainAs(outerText) {
+                text = header, color = headerColor, modifier = Modifier.constrainAs(outerText) {
                     top.linkTo(parent.top)
-                },
-                style = MaterialTheme.typography.headlineSmall
+                }, style = MaterialTheme.typography.headlineSmall
             )
         }
     }
@@ -90,7 +83,15 @@ fun AccordionMenu(
 @Composable
 fun AccordionPreview() {
     Column {
-        AccordionMenu(header = "Header", content = "Content \nContent \nContent \nContent", firstExpanded = true)
-        AccordionMenu(header = "Header", content = "Content \nContent \nContent \nContent", firstExpanded = false)
+        AccordionMenu(
+            header = "Header",
+            content = "Content \nContent \nContent \nContent",
+            firstExpanded = true
+        )
+        AccordionMenu(
+            header = "Header",
+            content = "Content \nContent \nContent \nContent",
+            firstExpanded = false
+        )
     }
 }
