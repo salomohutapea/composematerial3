@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.android.compose.screenshot' version '0.0.1-alpha01' // FOR SCREENSHOT TEST
 }
 
 android {
@@ -36,8 +37,11 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion "1.5.4"
+        kotlinCompilerExtensionVersion "1.5.14"  // FOR SCREENSHOT TEST, minimum 1.5.4
     }
+
+    experimentalProperties["android.experimental.enableScreenshotTest"] = true // FOR SCREENSHOT TEST
+
     packagingOptions {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
@@ -64,4 +68,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+
+    screenshotTestImplementation "androidx.compose.ui:ui-tooling:$compose_version" // FOR SCREENSHOT TEST
 }
